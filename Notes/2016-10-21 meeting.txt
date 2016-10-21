@@ -1,0 +1,31 @@
+1. Besprechung 21.10.2016
+Anwesend: Andreas, Michael, Kaan, Evrim
+TOPS
+1. Definition des Hauptmenüs:
+2. Schaltlogik
+3. Zusammenhang zw. Strecke, Zeit, Geschw., Beschl.
+4. Tacho
+5. Schalt-Button
+
+Hauptmenü:
+1. Definition des Hauptmenüs:
+------------------------------
+Einzelspieler	-> Gegen Zeit, Gegen COM 	-> Fahrzeugwahl			-> Rennen starten
+Mehrspieler 	-> Fahrzeugwahl Spieler 1 	-> Fahrzeugwahl Spieler 2	-> Rennen starten
+
+2. Schaltlogik:
+---------------
+Zusammenhang zwischen Drehzahl und Beschleunigung festlegen.
+linearer Funktionsgraph.
+
+3. Zusammenhang
+---------------
+errechnet sich aus der Schaltlogik heraus.
+
+4. Tacho
+--------
+Schnittstellen aus dem Beispiel anschauen. C++ Code analysieren.
+
+5. Schalt-Button
+----------------
+Animation für den Gangschalter
