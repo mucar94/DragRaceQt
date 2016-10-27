@@ -13,22 +13,54 @@ CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
 
 CarPhysics::step(){
 
+    float v_for_a_max[6];
+    float a_max[6];
+    float rpm_per_m_per_s[6];
+
+    v_for_a_max[1]=0;
+    v_for_a_max[2]=18.3;
+    v_for_a_max[3]=29.5;
+    v_for_a_max[4]=42.0;
+    v_for_a_max[5]=56.3;
+
+    a_max[1]=8;
+    a_max[2]=8;
+    a_max[3]=8;
+    a_max[4]=8;
+    a_max[5]=8;
+
+    rpm_per_m_per_s[1]=380;
+    rpm_per_m_per_s[2]=230;
+    rpm_per_m_per_s[3]=166;
+    rpm_per_m_per_s[4]=125;
+    rpm_per_m_per_s[5]=100;
+
     float passed_time = 0.15;
 
-    float v_for_a_max_of_gear_1=0;
+    //automatisches schalten
+    if(rpm>7000 and gear<5)gear++;
 
-    float a_max_of_gear_1=8;
+    //beschleunigung konstant für jeden gang
+    a = a_max[gear];
 
-    a = a_max_of_gear_1;
-    v = v + a * passed_time;
+    //geschwindigkeit erhöhen (ausser drehzahlbegrenzer ist aktiv)
+    if (rpm<7000){
+        v = v + a * passed_time;
+    }
+
+    //vorwärtsbewegen mit berechneter geschwindigkeit
     s = s + v * passed_time;
+
+    //drehzahl bestimmen abhängig von gang und geschwindigkeit
+    rpm=v*rpm_per_m_per_s[gear];
+
+
+    qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm ;
 
     float gui_max_a = 10;
     float gui_max_v = 83;
     float gui_max_s = 402;
-    float gui_max_rpm = 80000;
-
-    qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm ;
+    float gui_max_rpm = 8000;
 
     emit rpm_update(1-rpm/gui_max_rpm);
     emit a_update(1-a/gui_max_a);
