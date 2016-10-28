@@ -1,0 +1,9 @@
+# build-files
+build*/
+
+# user-specific project file
+*/*.pro.user
+*/*.pro.user*
+
+# Doc
+Doc/*.html
