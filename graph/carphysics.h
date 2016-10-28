@@ -14,12 +14,12 @@ public:
     float s;
     float rpm;
 signals:
-    rpm_update(qreal);
-    v_update(qreal);
-    a_update(qreal);
-    s_update(qreal);
+    void rpm_update(qreal);
+    void v_update(qreal);
+    void a_update(qreal);
+    void s_update(qreal);
 public slots:
-    step();
+    void step();
 };
 
 #endif // CARPHYSICS_H
