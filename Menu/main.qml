@@ -11,7 +11,10 @@ Window
     Image
     {
         source : "qrc:/picture/background_car.jpg"
-        anchors.centerIn: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.top: parent.top
     }
 
     Text
