@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MenuButton.qml</file>
+        <file>picture/background_car.jpg</file>
+    </qresource>
+</RCC>
