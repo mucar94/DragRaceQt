@@ -11,17 +11,17 @@ CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
     rpm = 0;
 }
 
-CarPhysics::step(){
+void CarPhysics::step(){
 
-    float v_for_a_max[6];
+//    float v_for_a_max[6];
     float a_max[6];
     float rpm_per_m_per_s[6];
 
-    v_for_a_max[1]=0;
-    v_for_a_max[2]=18.3;
-    v_for_a_max[3]=29.5;
-    v_for_a_max[4]=42.0;
-    v_for_a_max[5]=56.3;
+//    v_for_a_max[1]=0;
+//    v_for_a_max[2]=18.3;
+//    v_for_a_max[3]=29.5;
+//    v_for_a_max[4]=42.0;
+//    v_for_a_max[5]=56.3;
 
     a_max[1]=8;
     a_max[2]=8;
