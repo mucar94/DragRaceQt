@@ -23,11 +23,11 @@ void CarPhysics::step(){
 //    v_for_a_max[4]=42.0;
 //    v_for_a_max[5]=56.3;
 
-    a_max[1]=8;
-    a_max[2]=8;
+    a_max[1]=9;
+    a_max[2]=8.5;
     a_max[3]=8;
-    a_max[4]=8;
-    a_max[5]=8;
+    a_max[4]=7.5;
+    a_max[5]=7;
 
     rpm_per_m_per_s[1]=380;
     rpm_per_m_per_s[2]=230;
@@ -38,7 +38,7 @@ void CarPhysics::step(){
     float passed_time = 0.15;
 
     //automatisches schalten
-    if(rpm>7000 and gear<5)gear++;
+    if(rpm>7000 && gear<5)gear++;
 
     //beschleunigung konstant für jeden gang
     a = a_max[gear];
@@ -48,11 +48,14 @@ void CarPhysics::step(){
         v = v + a * passed_time;
     }
 
+    //wand nach viertel meile
+    if(s>402) v=0;
+
     //vorwärtsbewegen mit berechneter geschwindigkeit
     s = s + v * passed_time;
 
     //drehzahl bestimmen abhängig von gang und geschwindigkeit
-    rpm=v*rpm_per_m_per_s[gear];
+    rpm= v * rpm_per_m_per_s[gear];
 
 
     qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm ;

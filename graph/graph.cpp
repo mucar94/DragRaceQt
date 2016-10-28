@@ -107,7 +107,7 @@ QSGNode *Graph::updatePaintNode(QSGNode *oldNode, UpdatePaintNodeData *)
 
         n->background = new NoisyNode(window());
         n->grid = new GridNode();
-        n->line = new LineNode(10, 0.5, QColor("steelblue"));
+        n->line = new LineNode(10, 0.5, QColor("black"));
         n->shadow = new LineNode(20, 0.2, QColor::fromRgbF(0.2, 0.2, 0.2, 0.4));
 
         n->appendChildNode(n->background);
