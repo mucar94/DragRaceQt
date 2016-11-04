@@ -46,6 +46,8 @@
 
 #include <QTimer>
 #include "carphysics.h"
+#include <QShortcut>
+
 
 int main(int argc, char *argv[])
 {
