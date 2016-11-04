@@ -11,6 +11,12 @@ CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
     rpm = 0;
 }
 
+void CarPhysics::shift_up(){
+
+    //schalten
+    if(gear<5)gear++;
+}
+
 void CarPhysics::step(){
 
 //    float v_for_a_max[6];
@@ -37,8 +43,6 @@ void CarPhysics::step(){
 
     float passed_time = 0.15;
 
-    //automatisches schalten
-    if(rpm>7000 && gear<5)gear++;
 
     //beschleunigung konstant für jeden gang
     a = a_max[gear];

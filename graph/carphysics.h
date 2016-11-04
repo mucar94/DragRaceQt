@@ -20,6 +20,7 @@ signals:
     void s_update(qreal);
 public slots:
     void step();
+    void shift_up();
 };
 
 #endif // CARPHYSICS_H

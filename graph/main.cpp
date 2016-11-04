@@ -66,12 +66,21 @@ int main(int argc, char *argv[])
     QObject::connect(&timer, SIGNAL(timeout()), &car, SLOT(step()));
     timer.start(150);
 
+
     QList<QQuickItem*> childitems = view.rootObject()->childItems();
     Graph* rpm_graph = (Graph*) childitems[0];
     Graph* a_graph = (Graph*) childitems[1];
     Graph* v_graph = (Graph*) childitems[2];
     Graph* s_graph = (Graph*) childitems[3];
 
+    QWidget* shift_up_button = (QWidget*) childitems[4];
+
+    QObject::connect(shift_up_button, SIGNAL(clicked()), &car, SLOT(shift_up()));
+
+    //QShortcut* shortcut = new QShortcut(QKeySequence("Ctrl+O"));
+    //shortcut.setKey("C");
+
+    //QObject::connect(shortcut, SIGNAL(activated()), &car, SLOT(step()));
 
     QObject::connect(&car, SIGNAL(rpm_update(qreal)), rpm_graph, SLOT(appendSampleShifting(qreal)));
     QObject::connect(&car, SIGNAL(a_update(qreal)), a_graph, SLOT(appendSampleShifting(qreal)));
