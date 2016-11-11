@@ -77,10 +77,10 @@ int main(int argc, char *argv[])
 
     QObject::connect(shift_up_button, SIGNAL(clicked()), &car, SLOT(shift_up()));
 
-    //QShortcut* shortcut = new QShortcut(QKeySequence("Ctrl+O"));
+    QShortcut* shortcut = new QShortcut(QKeySequence("A"),shift_up_button);
     //shortcut.setKey("C");
 
-    //QObject::connect(shortcut, SIGNAL(activated()), &car, SLOT(step()));
+    QObject::connect(shortcut, SIGNAL(activated()), &car, SLOT(shift_up()));
 
     QObject::connect(&car, SIGNAL(rpm_update(qreal)), rpm_graph, SLOT(appendSampleShifting(qreal)));
     QObject::connect(&car, SIGNAL(a_update(qreal)), a_graph, SLOT(appendSampleShifting(qreal)));

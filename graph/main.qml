@@ -115,12 +115,11 @@ Item {
         width: buttonText.width + 20
         height: 30
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "lightsteelblue" }
+            GradientStop { position: 0.0; color: "white" }
             GradientStop { position: 1.0;
-                color: button.focus ? "red" : "blue" }
+                color: button.focus ? "red" : "black" }
         }
 
-        radius: 5
         antialiasing: true
 
         Text {
