@@ -1,6 +1,12 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
+        <file>HighscorePage.qml</file>
+        <file>MainMenuPage.qml</file>
+        <file>MultiPlayerPage.qml</file>
+        <file>SelectCarPage.qml</file>
+        <file>SinglePlayerPage.qml</file>
+        <file>MyButton.qml</file>
+        <file>picture/background_car.jpg</file>
     </qresource>
 </RCC>

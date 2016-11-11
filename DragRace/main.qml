@@ -1,16 +1,47 @@
-import QtQuick 2.5
+import QtQuick 2.7
 import QtQuick.Window 2.2
-
+import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.3
 Window {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Hello World")
+    title: qsTr("DragRaceQt")
 
-    MainForm {
-        anchors.fill: parent
-        mouseArea.onClicked: {
-            console.log(qsTr('Clicked on background. Text: "' + textEdit.text + '"'))
-        }
+
+
+
+
+StackLayout {
+    id: layout
+    anchors.fill: parent
+    currentIndex: 0
+    MainMenuPage{
+        //0
+        id: mainmenu_p
     }
+
+    SinglePlayerPage{
+        //1
+        id:singleplayer_p
+    }
+
+    MultiPlayerPage{
+        //2
+        id: multiplayer_p
+    }
+
+    HighscorePage{
+        //3
+        id: highscore_p
+    }
+
+    SelectCarPage{
+        //4
+        id: selectcar_p
+    }
+
+}
+
+
 }
