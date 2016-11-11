@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MyButton.qml</file>
+        <file>SinglePlayerPage.qml</file>
+        <file>MultiPlayerPage.qml</file>
+        <file>MainMenuPage.qml</file>
+        <file>SelectCarPage.qml</file>
+        <file>HighscorePage.qml</file>
+    </qresource>
+</RCC>
