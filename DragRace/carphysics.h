@@ -21,6 +21,7 @@ signals:
     void a_update(qreal);
     void s_update(qreal);
 public slots:
+    void start();
     void step();
     void shift_up();
 };

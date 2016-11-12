@@ -4,6 +4,10 @@
 
 CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
 {
+
+}
+
+void CarPhysics::start(){
     gear = 1;
     a = 0;
     v = 0;
@@ -14,7 +18,6 @@ CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
 
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(step()));
     timer.start(150);
-
 }
 
 void CarPhysics::shift_up(){
