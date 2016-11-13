@@ -22,9 +22,7 @@ Text
     font.pointSize: 30
     font.letterSpacing: 7
     font.wordSpacing: 15
-    anchors.right: parent.right
-    rightPadding: 60
-    topPadding: 30
+    anchors.horizontalCenter: parent.horizontalCenter
 }
 
 
@@ -44,7 +42,7 @@ Column
         Text
         {
             font.bold: true
-            text: "TODO"
+            text: "TODO - HighScore"
             color: mouse_area.containsMouse ? "blue" : "white"
             anchors.centerIn: parent
         }

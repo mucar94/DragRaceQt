@@ -8,5 +8,6 @@
         <file>SinglePlayerPage.qml</file>
         <file>MyButton.qml</file>
         <file>picture/background_car.jpg</file>
+        <file>DemoPage.qml</file>
     </qresource>
 </RCC>

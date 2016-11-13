@@ -93,7 +93,7 @@ Column
             anchors.fill:  parent
             hoverEnabled: true
             id: mouse_area3
-            onClicked: layout.currentIndex = 4
+            onClicked: layout.currentIndex = 5
 
         }
     }

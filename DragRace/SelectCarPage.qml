@@ -8,10 +8,8 @@ Rectangle
 Image
 {
     source : "qrc:/picture/background_car.jpg"
-    anchors.left: parent.left
     anchors.right: parent.right
     anchors.bottom: parent.bottom
-    anchors.top: parent.top
 }
 
 Text
@@ -44,7 +42,7 @@ Column
         Text
         {
             font.bold: true
-            text: "TODO"
+            text: "TODO - Selectcar"
             color: mouse_area.containsMouse ? "blue" : "white"
             anchors.centerIn: parent
         }
