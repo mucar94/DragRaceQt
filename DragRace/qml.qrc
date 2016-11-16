@@ -3,11 +3,25 @@
         <file>main.qml</file>
         <file>HighscorePage.qml</file>
         <file>MainMenuPage.qml</file>
-        <file>MultiPlayerPage.qml</file>
         <file>SelectCarPage.qml</file>
-        <file>SinglePlayerPage.qml</file>
-        <file>MyButton.qml</file>
-        <file>picture/background_car.jpg</file>
         <file>DemoPage.qml</file>
+        <file>picture/multiplyr.png</file>
+        <file>picture/singleplyr.png</file>
+        <file>picture/highscore.svg</file>
+        <file>picture/1v1.png</file>
+        <file>picture/demo.png</file>
+        <file>picture/start.png</file>
+        <file>picture/timerace.png</file>
+        <file>picture/back.png</file>
+        <file>MenuButton.qml</file>
+        <file>picture/W1v1.png</file>
+        <file>picture/Wback.png</file>
+        <file>picture/Wdemo.png</file>
+        <file>picture/Whighscore.png</file>
+        <file>picture/Wmultiplyr.png</file>
+        <file>picture/Wsingleplyr.png</file>
+        <file>picture/Wtimerace.png</file>
+        <file>picture/Titel.png</file>
+        <file>picture/background_car.jpg</file>
     </qresource>
 </RCC>

@@ -44,7 +44,6 @@ Item{
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 20
 
-
         Rectangle{
             id: startrect
             width: 50
@@ -98,7 +97,7 @@ Item{
 
             MouseArea{
                 anchors.fill: parent
-                onClicked: layout.currentIndex = 0
+                onClicked: page.currentIndex = 0
             }
 
         }

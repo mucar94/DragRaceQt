@@ -3,19 +3,19 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 
-
-
 Window {
     visible: true
-    width: 640
-    height: 480
+    width: 1280
+    height: 720
+
+
     title: qsTr("DragRaceQt")
 
 
-
-
     StackLayout {
-        id: layout
+        width: parent.width
+        height: parent.height
+        id: page
         anchors.fill: parent
         currentIndex: 0
         MainMenuPage{
@@ -23,32 +23,16 @@ Window {
             id: mainmenu_p
         }
 
-        SinglePlayerPage{
-            //1
-            id:singleplayer_p
-        }
-
-        MultiPlayerPage{
-            //2
-            id: multiplayer_p
-        }
-
         HighscorePage{
-            //3
-            id: highscore_p
+            //1
         }
 
         SelectCarPage{
-            //4
-            id: selectcar_p
+            //2
         }
 
         DemoPage{
-            //5
-            id: demopage_p
+            //3
         }
-
     }
-
-
 }
