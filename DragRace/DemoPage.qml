@@ -7,34 +7,35 @@ Item{
     id: demogame
 
 
-    function updatespeed(s_value){
-        speed = s_value
-    }
-
-    function updaterpm(rpm_value){
-        rpm = rpm_value
-    }
-
-    function updateposition(pos_value){
-        pos = pos_value
-    }
-    function updategear(gear_value){
-        gear = gear_value
-    }
+    property real speed_g;
+    property real position_g;
+    property real rpm_g;
 
     anchors.fill: parent
     CarPhysics
     {
+        onV_update: speed_g = v*3
+        onS_update: position_g = s
+        onRpm_update: rpm_g = (rpm/1000)
         id: physics
     }
 
     Text{
+        id: title
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         font.pointSize: 50
         font.bold: true
         font.letterSpacing: 5
         text: "DEMO"
+    }
+
+    Text{
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pointSize: 20
+
+        anchors.top: title.bottom
+        text: "position: " + position_g
     }
 
     Row{
@@ -97,7 +98,8 @@ Item{
 
             MouseArea{
                 anchors.fill: parent
-                onClicked: page.currentIndex = 0
+                onClicked: {page.currentIndex = 0;
+                           physics.stop();}
             }
 
         }
@@ -114,7 +116,7 @@ Item{
         CircularGauge {
 
             maximumValue: 280
-            value: speed
+            value: speed_g
             width: 200
             height: width
             id: speed_tacho
@@ -140,7 +142,7 @@ Item{
 
 
             maximumValue: 9
-            value: rpm
+            value: rpm_g
             width: 200
             height: width
             id: rpm_tacho

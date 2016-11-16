@@ -17,10 +17,10 @@ public:
     bool running;
     QTimer timer;
 signals:
-    void rpm_update(qreal);
-    void v_update(qreal);
-    void a_update(qreal);
-    void s_update(qreal);
+    void rpm_update(qreal rpm);
+    void v_update(qreal v);
+    void a_update(qreal a);
+    void s_update(qreal s);
 public slots:
     void start();
     void stop();
