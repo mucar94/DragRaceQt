@@ -14,6 +14,7 @@ public:
     float v;
     float s;
     float rpm;
+    bool running;
     QTimer timer;
 signals:
     void rpm_update(qreal);
@@ -22,6 +23,7 @@ signals:
     void s_update(qreal);
 public slots:
     void start();
+    void stop();
     void step();
     void shift_up();
 };
