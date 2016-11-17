@@ -23,5 +23,7 @@
         <file>picture/Wtimerace.png</file>
         <file>picture/Titel.png</file>
         <file>picture/background_car.jpg</file>
+        <file>DashboardGaugeStyle.qml</file>
+        <file>TachometerStyle.qml</file>
     </qresource>
 </RCC>
