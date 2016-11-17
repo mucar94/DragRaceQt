@@ -6,7 +6,7 @@ CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
 {
     running=false;
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(step()));
-    timer.start(150);
+    timer.start(33);
 }
 
 void CarPhysics::start(){
@@ -26,7 +26,7 @@ void CarPhysics::stop(){
 void CarPhysics::shift_up(){
 
     //schalten
-    if(gear<5 and running)gear++;
+    if(gear<5 && running)gear++;
 
 }
 
@@ -54,7 +54,7 @@ void CarPhysics::step(){
         rpm_per_m_per_s[4]=125;
         rpm_per_m_per_s[5]=100;
 
-        float passed_time = 0.15;
+        float passed_time = 0.033;
 
 
         //beschleunigung konstant für jeden gang
