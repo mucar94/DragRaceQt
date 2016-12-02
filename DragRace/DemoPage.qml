@@ -22,6 +22,31 @@ Item
         id: physics
     }
 
+    Image {
+        width: 3240*15; height: 1080
+        x: redracecar.x - 2000 - position_g*100
+//        y: redracecar.y
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: -10
+
+        source : "qrc:/picture/racetrack.jpg"
+        fillMode: Image.TileHorizontally
+
+//        Behavior on x { SmoothedAnimation { velocity: 20000 } }
+//        Behavior on y { SmoothedAnimation { velocity: 200 } }
+    }
+
+    Image{
+        id: redracecar
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: -200
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: -50
+        height: 400
+        source : "qrc:/picture/lancer_evo.png"
+        fillMode: Image.PreserveAspectFit
+
+    }
 
 
     Text
@@ -83,31 +108,6 @@ Item
                 onClicked: physics.start()
             }
 
-
-        }
-
-        Rectangle
-        {
-            id: shiftrect
-            width: 50
-            height: width
-            radius: 100
-            color: shift_area.containsMouse ? "red" : "black"
-            Text{
-                anchors.centerIn: parent
-                text: "SHIFT"
-                color: "white"
-                font.bold: true
-            }
-
-            MouseArea
-            {
-                id: shift_area
-                hoverEnabled: true
-
-                anchors.fill: parent
-                onClicked: physics.shift_up();
-            }
 
         }
 
@@ -197,4 +197,40 @@ Item
 
     }
 
+    Rectangle
+    {
+        id: shiftrect
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 30
+        anchors.right: parent.right
+        anchors.rightMargin: 30
+        width: 125
+        height: width
+        radius: 250
+        color: shift_area.containsMouse ? "red" : "black"
+        Text{
+            anchors.centerIn: parent
+            text: "SHIFT"
+            color: "white"
+            font.bold: true
+            font.pointSize:shiftrect.width * 0.15 <= 0 ? 1 : shiftrect.width * 0.15
+
+        }
+
+        MouseArea
+        {
+            id: shift_area
+            hoverEnabled: true
+
+            anchors.fill: parent
+            onClicked: physics.shift_up();
+        }
+
+    }
+
+    focus: true
+    Keys.onRightPressed: redracecar.anchors.horizontalCenterOffset = redracecar.anchors.horizontalCenterOffset + 10
+    Keys.onLeftPressed: redracecar.anchors.horizontalCenterOffset = redracecar.anchors.horizontalCenterOffset - 10
+    Keys.onUpPressed: physics.shift_up();
+    Keys.onDownPressed: physics.shift_down();
 }

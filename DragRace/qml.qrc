@@ -25,5 +25,7 @@
         <file>picture/background_car.jpg</file>
         <file>DashboardGaugeStyle.qml</file>
         <file>TachometerStyle.qml</file>
+        <file>picture/lancer_evo.png</file>
+        <file>picture/racetrack.jpg</file>
     </qresource>
 </RCC>
