@@ -11,14 +11,18 @@ public:
     explicit CarPhysics(QObject *parent = 0);
     int gear;
     float a;
+    std::list<float> v_list;
+    float v_list_average;
     float v;
     float s;
     float rpm;
     std::list<float> rpm_list;
     float rpm_list_average;
     bool running;
+    int timer_value = 33;
     QTimer timer;
 signals:
+    void end_of_race();
     void rpm_update(qreal rpm);
     void v_update(qreal v);
     void a_update(qreal a);

@@ -6,7 +6,7 @@ CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
 {
     running=false;
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(step()));
-    timer.start(33);
+    timer.start(timer_value);
 }
 
 void CarPhysics::start(){
@@ -25,9 +25,20 @@ void CarPhysics::stop(){
 
 void CarPhysics::shift_up(){
 
-    //schalten
-    if(gear<5 && running)gear++;
+    if(gear<5 && running){
+        //verlangsamen bei zu frühem schalten
+        float speed_punishment=0.0f;
+        if( rpm<7000.0f && rpm>6000.0f){
+            speed_punishment=0.003f*rpm-21.0f;
+        }
+        if(rpm < 6000.0f){
+            speed_punishment=-3.0f;
+        }
+        v += speed_punishment;
 
+        //schalten
+        gear++;
+    }
 }
 
 void CarPhysics::step(){
@@ -51,10 +62,10 @@ void CarPhysics::step(){
         rpm_per_m_per_s[1]=380;
         rpm_per_m_per_s[2]=230;
         rpm_per_m_per_s[3]=166;
-        rpm_per_m_per_s[4]=125;
-        rpm_per_m_per_s[5]=100;
+        rpm_per_m_per_s[4]=110;
+        rpm_per_m_per_s[5]=80;
 
-        float passed_time = 0.033f;
+        float delta_t = timer_value / 1000.0f;
 
 
         //beschleunigung konstant für jeden gang
@@ -62,14 +73,17 @@ void CarPhysics::step(){
 
         //geschwindigkeit erhöhen (ausser drehzahlbegrenzer ist aktiv)
         if (rpm<7000){
-            v = v + a * passed_time;
+            v = v + a * delta_t;
         }
 
-        //wand nach viertel meile
-        if(s>402) v=0;
-
         //vorwärtsbewegen mit berechneter geschwindigkeit
-        s = s + v * passed_time;
+        s = s + v * delta_t;
+
+        //zeit anhalten nach viertel meile
+        if(s>402){
+            running=false;
+            emit end_of_race();
+        }
 
         //drehzahl bestimmen abhängig von gang und geschwindigkeit
         rpm= v * rpm_per_m_per_s[gear];
@@ -89,11 +103,22 @@ void CarPhysics::step(){
         }
         rpm_list_average = rpm_list_average/rpm_list.size();
 
+        //tiefpass für v
+        v_list.push_front(v);
+        if (v_list.size()>4){
+            v_list.pop_back();
+        }
+        v_list_average=0;
+        for (std::list<float>::iterator it=v_list.begin(); it != v_list.end(); ++it){
+            v_list_average = v_list_average+*it;
+        }
+        v_list_average = v_list_average/v_list.size();
+
 
 
         emit rpm_update(rpm_list_average);
         emit a_update(a);
-        emit v_update(v);
+        emit v_update(v_list_average);
         emit s_update(s);
     }
 }
