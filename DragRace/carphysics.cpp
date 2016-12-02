@@ -54,7 +54,7 @@ void CarPhysics::step(){
         rpm_per_m_per_s[4]=125;
         rpm_per_m_per_s[5]=100;
 
-        float passed_time = 0.033;
+        float passed_time = 0.033f;
 
 
         //beschleunigung konstant für jeden gang
@@ -78,7 +78,20 @@ void CarPhysics::step(){
         qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm ;
 
 
-        emit rpm_update(rpm);
+        //tiefpass für rpm
+        rpm_list.push_front(rpm);
+        if (rpm_list.size()>4){
+            rpm_list.pop_back();
+        }
+        rpm_list_average=0;
+        for (std::list<float>::iterator it=rpm_list.begin(); it != rpm_list.end(); ++it){
+            rpm_list_average = rpm_list_average+*it;
+        }
+        rpm_list_average = rpm_list_average/rpm_list.size();
+
+
+
+        emit rpm_update(rpm_list_average);
         emit a_update(a);
         emit v_update(v);
         emit s_update(s);

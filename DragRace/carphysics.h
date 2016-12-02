@@ -14,6 +14,8 @@ public:
     float v;
     float s;
     float rpm;
+    std::list<float> rpm_list;
+    float rpm_list_average;
     bool running;
     QTimer timer;
 signals:
