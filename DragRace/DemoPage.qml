@@ -2,7 +2,8 @@ import QtQuick 2.0
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Extras 1.4
 import CarPhysics 1.0
-Item{
+Item
+{
 
     id: demogame
 
@@ -10,6 +11,7 @@ Item{
     property real speed_g;
     property real position_g;
     property real rpm_g;
+    property real time_g;
 
     anchors.fill: parent
     CarPhysics
@@ -20,9 +22,13 @@ Item{
         id: physics
     }
 
-    Text{
+
+
+    Text
+    {
         id: title
         anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 30
         anchors.top: parent.top
         font.pointSize: 50
         font.bold: true
@@ -30,7 +36,12 @@ Item{
         text: "DEMO"
     }
 
-    Text{
+
+
+
+    Text
+    {
+        id: position
         anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: 20
 
@@ -38,27 +49,36 @@ Item{
         text: "position: " + position_g
     }
 
-    Row{
+    Row
+    {
 
         id: controls
         anchors.top : gaugerow.bottom
+        anchors.topMargin: 30
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 20
 
-        Rectangle{
+        Rectangle
+        {
             id: startrect
             width: 50
             height: width
             radius: 100
-            color: "green"
+            color: start_area.containsMouse ? "greenyellow": "green"
 
-            Text{
+
+            Text
+            {
                 anchors.centerIn: parent
                 text: "START"
                 font.bold: true
             }
 
-            MouseArea{
+            MouseArea
+            {
+                id: start_area
+                hoverEnabled: true
+
                 anchors.fill: parent
                 onClicked: physics.start()
             }
@@ -66,12 +86,13 @@ Item{
 
         }
 
-        Rectangle{
+        Rectangle
+        {
             id: shiftrect
             width: 50
             height: width
             radius: 100
-            color: "black"
+            color: shift_area.containsMouse ? "red" : "black"
             Text{
                 anchors.centerIn: parent
                 text: "SHIFT"
@@ -79,66 +100,89 @@ Item{
                 font.bold: true
             }
 
-            MouseArea{
+            MouseArea
+            {
+                id: shift_area
+                hoverEnabled: true
+
                 anchors.fill: parent
                 onClicked: physics.shift_up();
             }
 
         }
 
-        Rectangle{
+        Rectangle
+        {
             width: 50
             height: width
             radius: 100
-            color: "grey"
+            color: stop_area.containsMouse?"lightgrey" :"grey"
+            Text{
+                anchors.centerIn: parent
+                text: "STOP"
+            }
+
+            MouseArea
+            {
+                hoverEnabled: true
+                id: stop_area
+                anchors.fill: parent
+                onClicked: {physics.stop();}
+            }
+
+        }
+
+        Rectangle
+        {
+            width: 50
+            height: width
+            radius: 100
+            color: back_area.containsMouse?"lightgrey" :"grey"
             Text{
                 anchors.centerIn: parent
                 text: "BACK"
             }
 
-            MouseArea{
+            MouseArea
+            {
+                id: back_area
+                hoverEnabled: true
+
                 anchors.fill: parent
                 onClicked: {page.currentIndex = 0;
-                           physics.stop();}
+                    physics.stop();}
             }
 
         }
+
+
 
     }
 
 
-    Row{
+    Row
+    {
 
         id: gaugerow
-        anchors.centerIn: parent
+        anchors.top:position.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 30
         spacing: 20
 
-        CircularGauge {
+        CircularGauge
+        {
 
-            maximumValue: 280
+            maximumValue: 240
             value: speed_g
             width: 200
             height: width
             id: speed_tacho
-            style: CircularGaugeStyle {
-
-
-                tickmarkStepSize : 20
-
-                needle: Rectangle {
-                    y: outerRadius * 0.15
-                    implicitWidth: outerRadius * 0.03
-                    implicitHeight: outerRadius * 0.9
-                    antialiasing: true
-                    color: "blue"
-
-                }
-
-            }
+            style: DashboardGaugeStyle{}
         }
 
 
-        CircularGauge {
+        CircularGauge
+        {
 
 
             maximumValue: 9
@@ -146,24 +190,10 @@ Item{
             width: 200
             height: width
             id: rpm_tacho
-            style: CircularGaugeStyle {
-                tickmarkStepSize : 1
-
-                needle: Rectangle {
-                    y: outerRadius * 0.15
-                    implicitWidth: outerRadius * 0.03
-                    implicitHeight: outerRadius * 0.9
-                    antialiasing: true
-                    color: "blue"
-
-                }
+            style: TachometerStyle{}
 
 
-
-            }
         }
-
-
 
     }
 
