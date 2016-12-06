@@ -43,7 +43,7 @@ Item
         anchors.bottom: parent.bottom
         anchors.bottomMargin: -50
         height: 400
-        source : "qrc:/picture/lancer_evo.png"
+        source : "qrc:/picture/vehicles/lancer_evo.png"
         fillMode: Image.PreserveAspectFit
 
     }
