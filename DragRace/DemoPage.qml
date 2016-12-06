@@ -46,6 +46,25 @@ Item
         source : "qrc:/picture/vehicles/lancer_evo.png"
         fillMode: Image.PreserveAspectFit
 
+        Image{
+            id: backwheel
+            x:148
+            y:228
+            height: 85
+            source : "qrc:/picture/vehicles/lancer_evo_wheel.png"
+            fillMode: Image.PreserveAspectFit
+
+            transform: Rotation { origin.x: 25; origin.y: 25; angle: 50}
+        }
+        Image{
+            id: frontwheel
+            x:584
+            y:230
+            height: 85
+            source : "qrc:/picture/vehicles/lancer_evo_wheel.png"
+            fillMode: Image.PreserveAspectFit
+        }
+
     }
 
 
