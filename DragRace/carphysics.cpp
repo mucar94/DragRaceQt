@@ -75,6 +75,9 @@ void CarPhysics::step(){
         if (rpm<7000){
             v = v + a * delta_t;
         }
+        else{
+
+        }
 
         //vorwärtsbewegen mit berechneter geschwindigkeit
         s = s + v * delta_t;

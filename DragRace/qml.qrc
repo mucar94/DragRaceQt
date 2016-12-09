@@ -32,5 +32,7 @@
         <file>picture/vehicles/mx5_wheel.png</file>
         <file>picture/vehicles/r8.png</file>
         <file>picture/vehicles/r8_wheel.png</file>
+        <file>Car_lancer_evo.qml</file>
+        <file>Car_r8.qml</file>
     </qresource>
 </RCC>

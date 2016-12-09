@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Extras 1.4
+import QtQuick.Layouts 1.3
 import CarPhysics 1.0
 Item
 {
@@ -36,37 +37,21 @@ Item
 //        Behavior on y { SmoothedAnimation { velocity: 200 } }
     }
 
-    Image{
+
+    StackLayout {
         id: redracecar
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -200
         anchors.bottom: parent.bottom
         anchors.bottomMargin: -50
         height: 400
-        source : "qrc:/picture/vehicles/lancer_evo.png"
-        fillMode: Image.PreserveAspectFit
-
-        Image{
-            id: backwheel
-            x:148
-            y:228
-            height: 85
-            width: 85
-            source : "qrc:/picture/vehicles/lancer_evo_wheel.png"
-            transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: position_g*100}
-
+        currentIndex: 0
+        Car_lancer_evo{
+            //0
         }
-        Image{
-            id: frontwheel
-            x:584
-            y:230
-            height: 85
-            width: 85
-            source : "qrc:/picture/vehicles/lancer_evo_wheel.png"
-            transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: position_g*100}
-
+        Car_r8{
+            //1
         }
-
     }
 
 
