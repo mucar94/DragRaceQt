@@ -15,6 +15,7 @@ void CarPhysics::start(){
     v = 0;
     s = 0;
     rpm = 0;
+    t=0;
     running=true;
 
 }
@@ -34,7 +35,12 @@ void CarPhysics::shift_up(){
         if(rpm < 6000.0f){
             speed_punishment=-3.0f;
         }
+
         v += speed_punishment;
+
+        if(v<0){
+            v=0;
+        }
 
         //schalten
         gear++;
@@ -76,7 +82,7 @@ void CarPhysics::step(){
             v = v + a * delta_t;
         }
         else{
-
+            v = v - ( ( rand() % 100 ) / 200 + 0.7 );
         }
 
         //vorwärtsbewegen mit berechneter geschwindigkeit
@@ -85,14 +91,17 @@ void CarPhysics::step(){
         //zeit anhalten nach viertel meile
         if(s>402){
             running=false;
-            emit end_of_race();
+            emit end_of_race(t);
         }
 
         //drehzahl bestimmen abhängig von gang und geschwindigkeit
         rpm= v * rpm_per_m_per_s[gear];
 
 
-        qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm ;
+
+        t += delta_t;
+
+        qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm << "   t: "<< t ;
 
 
         //tiefpass für rpm
@@ -108,7 +117,7 @@ void CarPhysics::step(){
 
         //tiefpass für v
         v_list.push_front(v);
-        if (v_list.size()>4){
+        if (v_list.size()>6){
             v_list.pop_back();
         }
         v_list_average=0;
@@ -123,5 +132,6 @@ void CarPhysics::step(){
         emit a_update(a);
         emit v_update(v_list_average);
         emit s_update(s);
+        emit t_update(t);
     }
 }

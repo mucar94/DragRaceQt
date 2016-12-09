@@ -18,15 +18,17 @@ public:
     float rpm;
     std::list<float> rpm_list;
     float rpm_list_average;
+    float t;
     bool running;
     int timer_value = 33;
     QTimer timer;
 signals:
-    void end_of_race();
+    void end_of_race(qreal t);
     void rpm_update(qreal rpm);
     void v_update(qreal v);
     void a_update(qreal a);
     void s_update(qreal s);
+    void t_update(qreal t);
 public slots:
     void start();
     void stop();
