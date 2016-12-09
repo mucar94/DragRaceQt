@@ -8,6 +8,14 @@ Window {
     width: 1280
     height: 720
 
+    Item{
+        id:car
+         property int actcar;
+
+    }
+
+
+
 
     title: qsTr("DragRaceQt")
 

@@ -109,7 +109,7 @@ Rectangle
                 {
                     text: "DEMO"
                     imagesource: mouse.containsMouse ? "qrc:/picture/Wdemo.png" : "qrc:/picture/demo.png"
-                    mouse.onClicked: page.currentIndex = 3
+                    mouse.onClicked: page.currentIndex = 2
                 }
 
                 MenuButton

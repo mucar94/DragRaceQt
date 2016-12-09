@@ -44,8 +44,8 @@ Item
         anchors.horizontalCenterOffset: -200
         anchors.bottom: parent.bottom
         anchors.bottomMargin: -50
+        currentIndex: car.actcar
         height: 400
-        currentIndex: 0
         Car_lancer_evo{
             //0
         }
