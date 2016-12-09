@@ -20,7 +20,7 @@ public:
     float rpm_list_average;
     float t;
     bool running;
-    int timer_value = 33;
+    int timer_value = 10;
     QTimer timer;
 signals:
     void end_of_race(qreal t);
