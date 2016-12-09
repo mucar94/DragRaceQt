@@ -1,24 +1,107 @@
 
 import QtQuick 2.7
 import QtQuick.Controls 1.4
-
+import QtQuick.Layouts 1.3
 
 Rectangle
 {
 
+
     Text{
-        id: text
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top:parent.top
-        text: "in Bearbeitung"
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+
+        text: "<"
+        font.pointSize: 40
+        color: mouse2.containsMouse ? "black" : "red"
+
+        MouseArea
+        {
+            id: mouse2
+            anchors.fill: parent
+            onClicked: {redracecar.currentIndex = (redracecar.currentIndex + 1 ) %2;
+                       car.actcar = (redracecar.currentIndex + 1 ) %2;}
+        }
+
     }
 
-    MenuButton
-    {
-        anchors.top: text.bottom
-        text: "ZURÜCK"
-        mouse.onClicked: page.currentIndex = 0
-        imagesource: "qrc:/picture/back.png"
+    Text{
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+
+
+        text: ">"
+        font.pointSize: 40
+        color: mouse1.containsMouse ? "black" : "red"
+
+        MouseArea
+        {
+            id: mouse1
+            anchors.fill: parent
+            onClicked: {redracecar.currentIndex = (redracecar.currentIndex + 1 ) %2;
+                       car.actcar = (redracecar.currentIndex + 1 ) %2;}
+
+        }
     }
+
+    StackLayout {
+        id: redracecar
+        anchors.centerIn: parent
+        height: 400
+        currentIndex: 0
+        Car_lancer_evo{
+            //0
+        }
+        Car_r8{
+            //1
+        }
+    }
+
+
+
+
+    Rectangle
+    {
+
+        height: parent.height/5
+        width: parent.width/5
+       anchors.top: redracecar.bottom
+       anchors.left: parent.left
+
+
+        MenuButton
+        {
+
+            id: back
+            text: "ZURÜCK"
+            mouse.onClicked: page.currentIndex = 0
+            imagesource: "qrc:/picture/back.png"
+        }
+
+
+    }
+
+    Rectangle
+    {
+
+        height: parent.height/5
+        width: parent.width/5
+       anchors.top: redracecar.bottom
+       anchors.left: back.right
+
+
+        MenuButton
+        {
+
+            text: "START"
+            mouse.onClicked: page.currentIndex = 3
+            imagesource: "qrc:/picture/start.png"
+        }
+    }
+
+
+
+
+
 
 }
