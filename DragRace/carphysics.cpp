@@ -15,7 +15,7 @@ void CarPhysics::start(){
     v = 0;
     s = 0;
     rpm = 0;
-    t=0;
+    t_millisecondes=0;
     running=true;
 
 }
@@ -73,6 +73,7 @@ void CarPhysics::step(){
 
         float delta_t = timer_value / 1000.0f;
 
+        t_millisecondes += timer_value;
 
         //beschleunigung konstant für jeden gang
         a = a_max[gear];
@@ -91,22 +92,16 @@ void CarPhysics::step(){
         //zeit anhalten nach viertel meile
         if(s>402){
             running=false;
-            emit end_of_race(t);
+            emit end_of_race(t_millisecondes/1000.0f);
         }
 
         //drehzahl bestimmen abhängig von gang und geschwindigkeit
         rpm= v * rpm_per_m_per_s[gear];
 
 
-
-        t += delta_t;
-
-        qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm << "   t: "<< t ;
-
-
         //tiefpass für rpm
         rpm_list.push_front(rpm);
-        if (rpm_list.size()>4){
+        if (rpm_list.size()>rpm_lowpass){
             rpm_list.pop_back();
         }
         rpm_list_average=0;
@@ -117,7 +112,7 @@ void CarPhysics::step(){
 
         //tiefpass für v
         v_list.push_front(v);
-        if (v_list.size()>6){
+        if (v_list.size()>v_lowpass){
             v_list.pop_back();
         }
         v_list_average=0;
@@ -127,11 +122,15 @@ void CarPhysics::step(){
         v_list_average = v_list_average/v_list.size();
 
 
-
-        emit rpm_update(rpm_list_average);
-        emit a_update(a);
-        emit v_update(v_list_average);
-        emit s_update(s);
-        emit t_update(t);
+        if(signalupdate_prescaler==0){
+            emit rpm_update(rpm_list_average);
+            emit a_update(a);
+            emit v_update(v_list_average);
+            emit s_update(s);
+            emit t_update(t_millisecondes/1000.0f);
+            //qInfo() << "a: " << a << "   v: "<< v << "   s: "<< s << "   rpm: "<< rpm << "   t: "<< t_millisecondes/1000.0f ;
+            signalupdate_prescaler = signalupdate_prescaler_maxvalue;
+        }
+        signalupdate_prescaler-=1;
     }
 }

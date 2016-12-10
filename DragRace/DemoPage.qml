@@ -19,7 +19,9 @@ Item
     {
         onV_update: speed_g = v*3
         onS_update: position_g = s
-        onRpm_update: rpm_g = (rpm/1000)
+        onRpm_update: rpm_g = rpm
+        onT_update: time_g = t
+        onEnd_of_race: {time.color="white";time.text=t.toFixed(3)}
         id: physics
     }
 
@@ -75,12 +77,13 @@ Item
 
     Text
     {
-        id: position
+        id: time
         anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: 20
 
         anchors.top: title.bottom
-        text: "position: " + position_g
+        text: "time: " + time_g.toFixed(2)
+
     }
 
     Row
@@ -173,7 +176,7 @@ Item
     {
 
         id: gaugerow
-        anchors.top:position.bottom
+        anchors.top:time.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 30
         spacing: 20
@@ -195,7 +198,7 @@ Item
 
 
             maximumValue: 9
-            value: rpm_g
+            value: rpm_g/1000
             width: 200
             height: width
             id: rpm_tacho
