@@ -3,26 +3,26 @@ import QtQuick 2.0
 Image{
     fillMode: Image.PreserveAspectFit
     source : "qrc:/picture/vehicles/r8.png"
-    anchors.fill: parent
+        height: 400
 
     Image{
         id: backwheel
-        x:215
-        y:228
-        height: 85
-        width: 85
+        x:168
+        y:212
+        height: 119
+        width: 119
         source : "qrc:/picture/vehicles/r8_wheel.png"
-        transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: position_g*100}
+        transform: Rotation { origin.x: 59.5; origin.y: 59.5; angle: position_g*100}
 
     }
     Image{
         id: frontwheel
-        x:651
-        y:230
-        height: 85
-        width: 85
+        x:646
+        y:212
+        height: 119
+        width: 119
         source : "qrc:/picture/vehicles/r8_wheel.png"
-        transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: position_g*100}
+        transform: Rotation { origin.x: 59.5; origin.y: 59.5; angle: position_g*100}
 
     }
 

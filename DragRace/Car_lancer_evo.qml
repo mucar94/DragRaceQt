@@ -4,7 +4,7 @@ import QtQuick 2.0
 Image{
     fillMode: Image.PreserveAspectFit
     source : "qrc:/picture/vehicles/lancer_evo.png"
-    anchors.fill: parent
+    height: 400
 
     Image{
         id: backwheel

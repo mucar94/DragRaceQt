@@ -19,8 +19,8 @@ Rectangle
         {
             id: mouse2
             anchors.fill: parent
-            onClicked: {redracecar.currentIndex = (redracecar.currentIndex + 1 ) %2;
-                       car.actcar = (redracecar.currentIndex + 1 ) %2;}
+            onClicked: {redracecar.currentIndex = (redracecar.currentIndex + 1 ) %3;
+                       car.actcar = redracecar.currentIndex;}
         }
 
     }
@@ -38,8 +38,8 @@ Rectangle
         {
             id: mouse1
             anchors.fill: parent
-            onClicked: {redracecar.currentIndex = (redracecar.currentIndex + 1 ) %2;
-                       car.actcar = (redracecar.currentIndex + 1 ) %2;}
+            onClicked: {redracecar.currentIndex = (redracecar.currentIndex + 1 ) %3;
+                       car.actcar = redracecar.currentIndex ;}
 
         }
     }
@@ -54,6 +54,9 @@ Rectangle
         }
         Car_r8{
             //1
+        }
+        Car_mx5{
+            //2
         }
     }
 
