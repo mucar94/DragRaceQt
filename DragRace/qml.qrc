@@ -26,14 +26,14 @@
         <file>DashboardGaugeStyle.qml</file>
         <file>TachometerStyle.qml</file>
         <file>picture/racetrack.jpg</file>
-        <file>picture/vehicles/lancer_evo.png</file>
         <file>picture/vehicles/lancer_evo_wheel.png</file>
-        <file>picture/vehicles/mx5.png</file>
         <file>picture/vehicles/mx5_wheel.png</file>
-        <file>picture/vehicles/r8.png</file>
         <file>picture/vehicles/r8_wheel.png</file>
         <file>Car_lancer_evo.qml</file>
         <file>Car_r8.qml</file>
         <file>Car_mx5.qml</file>
+        <file>picture/vehicles/lancer_evo.png</file>
+        <file>picture/vehicles/mx5.png</file>
+        <file>picture/vehicles/r8.png</file>
     </qresource>
 </RCC>
