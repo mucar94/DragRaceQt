@@ -6,23 +6,23 @@ import CarPhysics 1.0
 Item
 {
 
-    id: demogame
-
+    anchors.fill: parent
+    property alias physics: physics
+    property alias timelable: timelable
 
     property real speed_g;
     property real position_g;
     property real rpm_g;
     property real time_g;
 
-    anchors.fill: parent
-    CarPhysics
-    {
-        onV_update: speed_g = v*3
+
+    CarPhysics{
+        id: physics
+        onV_update: speed_g = v*3.6
         onS_update: position_g = s
         onRpm_update: rpm_g = rpm
         onT_update: time_g = t
-        onEnd_of_race: {time.color="white";time.text=t.toFixed(3)}
-        id: physics
+        onEnd_of_race:  finishtimelable.text=t.toFixed(3)
     }
 
     Image {
@@ -60,37 +60,34 @@ Item
     }
 
 
-    Text
-    {
-        id: title
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 30
-        anchors.top: parent.top
-        font.pointSize: 50
-        font.bold: true
-        font.letterSpacing: 5
-        text: "DEMO"
-    }
-
-
 
 
     Text
     {
-        id: time
+        id: timelable
         anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: 20
 
         anchors.top: title.bottom
         text: "time: " + time_g.toFixed(2)
+        color: "white"
+    }
+    Text
+    {
+        id: finishtimelable
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pointSize: 20
 
+        anchors.top: controls.bottom
+        text: "##"
+        color: "white"
     }
 
     Row
     {
 
         id: controls
-        anchors.top : gaugerow.bottom
+        anchors.top : parent.top
         anchors.topMargin: 30
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 20
@@ -176,7 +173,7 @@ Item
     {
 
         id: gaugerow
-        anchors.top:time.bottom
+        anchors.top:timelable.bottom
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 30
         spacing: 20

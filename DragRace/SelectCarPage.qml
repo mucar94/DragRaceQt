@@ -97,7 +97,10 @@ Rectangle
         {
 
             text: "START"
-            mouse.onClicked: page.currentIndex = 3
+            mouse.onClicked: {
+                page.currentIndex = 3;
+                gamecontroller.reset_physics();
+            }
             imagesource: "qrc:/picture/start.png"
         }
     }

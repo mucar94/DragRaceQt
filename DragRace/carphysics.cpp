@@ -15,7 +15,7 @@ void CarPhysics::start(){
     v = 0;
     s = 0;
     rpm = 0;
-    t_millisecondes=0;
+    t_millisecondes=-3000;
     running=true;
 
 }
@@ -84,6 +84,11 @@ void CarPhysics::step(){
         }
         else{
             v = v - ( ( rand() % 100 ) / 200 + 0.7 );
+        }
+
+        //während countdown stehen bleiben
+        if(t_millisecondes<0){
+            v=0;
         }
 
         //vorwärtsbewegen mit berechneter geschwindigkeit

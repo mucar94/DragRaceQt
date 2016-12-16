@@ -15,7 +15,15 @@ Window {
     }
 
 
-
+    Item{
+        id:gamecontroller
+        function reset_physics() {
+            console.log("reset_physics");
+            demopage.physics.start();
+            demopage.timelable.color = "white";
+           // demopage.timelable.text = "time: " + demopage.time_g.toFixed(2);
+        }
+    }
 
     title: qsTr("DragRaceQt")
 
@@ -28,7 +36,6 @@ Window {
         currentIndex: 0
         MainMenuPage{
             //0
-            id: mainmenu_p
         }
 
         HighscorePage{
@@ -40,7 +47,10 @@ Window {
         }
 
         DemoPage{
+            id: demopage
             //3
         }
     }
+
+    //Component.onCompleted: physics.start()
 }
