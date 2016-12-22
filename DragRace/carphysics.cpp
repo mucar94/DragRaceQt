@@ -49,15 +49,8 @@ void CarPhysics::shift_up(){
 
 void CarPhysics::step(){
     if(running){
-  //    float v_for_a_max[6];
         float a_max[6];
         float rpm_per_m_per_s[6];
-
-  //    v_for_a_max[1]=0;
-  //    v_for_a_max[2]=18.3;
-  //    v_for_a_max[3]=29.5;
-  //    v_for_a_max[4]=42.0;
-  //    v_for_a_max[5]=56.3;
 
         a_max[1]=9;
         a_max[2]=8.5;
@@ -105,27 +98,10 @@ void CarPhysics::step(){
 
 
         //tiefpass für rpm
-        rpm_list.push_front(rpm);
-        if (rpm_list.size()>rpm_lowpass){
-            rpm_list.pop_back();
-        }
-        rpm_list_average=0;
-        for (std::list<float>::iterator it=rpm_list.begin(); it != rpm_list.end(); ++it){
-            rpm_list_average = rpm_list_average+*it;
-        }
-        rpm_list_average = rpm_list_average/rpm_list.size();
+        rpm_list_average = lowpass(rpm, &rpm_list, rpm_lowpass);
 
         //tiefpass für v
-        v_list.push_front(v);
-        if (v_list.size()>v_lowpass){
-            v_list.pop_back();
-        }
-        v_list_average=0;
-        for (std::list<float>::iterator it=v_list.begin(); it != v_list.end(); ++it){
-            v_list_average = v_list_average+*it;
-        }
-        v_list_average = v_list_average/v_list.size();
-
+        v_list_average = lowpass(v, &v_list, v_lowpass);
 
         if(signalupdate_prescaler==0){
             emit rpm_update(rpm_list_average);
@@ -139,3 +115,18 @@ void CarPhysics::step(){
         signalupdate_prescaler-=1;
     }
 }
+
+
+float CarPhysics::lowpass(float new_value, std::list<float>* sample_list, int sample_size){
+    sample_list->push_front(new_value);
+    if (sample_list->size()>sample_size){
+        sample_list->pop_back();
+    }
+    float list_average=0;
+    for (std::list<float>::iterator it=sample_list->begin(); it != sample_list->end(); ++it){
+        list_average = list_average+*it;
+    }
+    return list_average/sample_list->size();
+}
+
+

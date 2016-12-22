@@ -13,7 +13,7 @@ Image{
         height: 85
         width: 85
         source : "qrc:/picture/vehicles/lancer_evo_wheel.png"
-        transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: position_g*100}
+        transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: demopage.position_g*100}
 
     }
     Image{
@@ -23,7 +23,7 @@ Image{
         height: 85
         width: 85
         source : "qrc:/picture/vehicles/lancer_evo_wheel.png"
-        transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: position_g*100}
+        transform: Rotation { origin.x: 42.5; origin.y: 42.5; angle: demopage.position_g*100}
 
     }
 

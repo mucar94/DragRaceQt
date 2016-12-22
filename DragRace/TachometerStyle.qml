@@ -105,7 +105,7 @@ DashboardGaugeStyle {
             anchors.top: parent.verticalCenter
             anchors.topMargin: 20
 
-            readonly property int rpmInt: valueSource.rpm
+            //readonly property int rpmInt: valueSource.rpm
         }
         Text {
             text: "x1000"
