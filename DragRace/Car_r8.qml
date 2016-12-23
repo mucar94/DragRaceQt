@@ -12,7 +12,7 @@ Image{
         height: 119
         width: 119
         source : "qrc:/picture/vehicles/r8_wheel.png"
-        transform: Rotation { origin.x: 59.5; origin.y: 59.5; angle: position_g*100}
+        transform: Rotation { origin.x: 59.5; origin.y: 59.5; angle: demopage.position_g*100}
 
     }
     Image{
@@ -22,7 +22,7 @@ Image{
         height: 119
         width: 119
         source : "qrc:/picture/vehicles/r8_wheel.png"
-        transform: Rotation { origin.x: 59.5; origin.y: 59.5; angle: position_g*100}
+        transform: Rotation { origin.x: 59.5; origin.y: 59.5; angle: demopage.position_g*100}
 
     }
 

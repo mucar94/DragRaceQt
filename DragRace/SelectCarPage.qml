@@ -66,8 +66,9 @@ Rectangle
     Rectangle
     {
 
-        height: parent.height/5
-        width: parent.width/5
+       id: back
+       height: parent.height/5
+       width: parent.width/5
        anchors.top: redracecar.bottom
        anchors.left: parent.left
 
@@ -75,7 +76,6 @@ Rectangle
         MenuButton
         {
 
-            id: back
             text: "ZURÜCK"
             mouse.onClicked: page.currentIndex = 0
             imagesource: "qrc:/picture/back.png"
@@ -87,8 +87,8 @@ Rectangle
     Rectangle
     {
 
-        height: parent.height/5
-        width: parent.width/5
+       height: parent.height/5
+       width: parent.width/5
        anchors.top: redracecar.bottom
        anchors.left: back.right
 
