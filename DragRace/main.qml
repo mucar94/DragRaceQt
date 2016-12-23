@@ -20,8 +20,9 @@ Window {
         function reset_physics() {
             console.log("reset_physics");
             demopage.physics.start();
-            demopage.timelable.color = "white";
-           // demopage.timelable.text = "time: " + demopage.time_g.toFixed(2);
+            demopage.physics2.start();
+            //demopage.timelable.color = "white";
+            //demopage.timelable.text = "time: " + demopage.time_g.toFixed(2);
         }
     }
 
@@ -46,7 +47,7 @@ Window {
             //2
         }
 
-        DemoPage{
+        DemoPageMultiplayer{
             id: demopage
             //3
         }

@@ -35,5 +35,7 @@
         <file>picture/vehicles/lancer_evo.png</file>
         <file>picture/vehicles/mx5.png</file>
         <file>picture/vehicles/r8.png</file>
+        <file>DemoPageMultiplayer.qml</file>
+        <file>picture/racetrack_barrier.png</file>
     </qresource>
 </RCC>

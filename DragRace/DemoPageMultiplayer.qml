@@ -8,6 +8,7 @@ Item
 
     anchors.fill: parent
     property alias physics: physics
+    property alias physics2: physics2
     property alias finishtimelable: finishtimelable
 
     property real speed_g;
@@ -15,6 +16,22 @@ Item
     property real rpm_g;
     property real time_g;
 
+    property real speed_g2;
+    property real position_g2;
+    property real rpm_g2;
+    property real time_g2;
+
+    Timer {
+        id: timer
+        interval: 1
+        repeat: true
+        running: true
+        onTriggered: {
+            physics.step();
+            physics2.step();
+        }
+
+    }
 
     CarPhysics{
         id: physics
@@ -24,13 +41,21 @@ Item
         onT_update: time_g = t
         onEnd_of_race:  finishtimelable.text=t.toFixed(3)
     }
+    CarPhysics{
+        id: physics2
+        onV_update: speed_g2 = v*3.6
+        onS_update: position_g2 = s
+        onRpm_update: rpm_g2 = rpm
+        onT_update: time_g2 = t
+        onEnd_of_race:  finishtimelable2.text=t.toFixed(3)
+    }
 
     Image {
         width: 3240*15; height: 1080
-        x: redracecar.x - 2000 - position_g*100
+        x: - 2000 - position_g*100
 //        y: redracecar.y
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: -10
+//        anchors.bottomMargin: -10
 
         source : "qrc:/picture/racetrack.jpg"
         fillMode: Image.TileHorizontally
@@ -41,7 +66,42 @@ Item
 
 
     StackLayout {
-        id: redracecar
+        id: racecar2
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset: -200 + (position_g2 - position_g)*100
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 110
+        currentIndex: car.actcar
+        height: 400
+        Car_lancer_evo{
+            //0
+        }
+        Car_r8{
+            //1
+        }
+        Car_mx5{
+            //2
+        }
+    }
+
+
+    Image {
+        width: 3240*15; height: 1080
+        x: - 2000 - position_g*100
+//        y: redracecar.y
+        anchors.bottom: parent.bottom
+//        anchors.bottomMargin: -10
+
+        source : "qrc:/picture/racetrack_barrier.png"
+        fillMode: Image.TileHorizontally
+
+//        Behavior on x { SmoothedAnimation { velocity: 20000 } }
+//        Behavior on y { SmoothedAnimation { velocity: 200 } }
+    }
+
+
+    StackLayout {
+        id: racecar
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -200
         anchors.bottom: parent.bottom
@@ -58,8 +118,6 @@ Item
             //2
         }
     }
-
-
 
 
     Text

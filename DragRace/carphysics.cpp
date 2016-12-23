@@ -6,7 +6,7 @@ CarPhysics::CarPhysics(QObject *parent) : QObject(parent)
 {
     running=false;
     QObject::connect(&timer, SIGNAL(timeout()), this, SLOT(step()));
-    timer.start(timer_value);
+    //timer.start(timer_value);
 }
 
 void CarPhysics::start(){
