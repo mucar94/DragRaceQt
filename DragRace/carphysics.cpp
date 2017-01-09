@@ -17,7 +17,7 @@ void CarPhysics::start(){
     rpm = 0;
     t_millisecondes=-3000;
     running=true;
-
+    signalupdate_prescaler=0;
 }
 
 void CarPhysics::stop(){
@@ -103,6 +103,7 @@ void CarPhysics::step(){
         //tiefpass für v
         v_list_average = lowpass(v, &v_list, v_lowpass);
 
+        //alle x durchläufe die signale emitten
         if(signalupdate_prescaler==0){
             emit rpm_update(rpm_list_average);
             emit a_update(a);
@@ -116,10 +117,10 @@ void CarPhysics::step(){
     }
 }
 
-
-float CarPhysics::lowpass(float new_value, std::list<float>* sample_list, int sample_size){
+// glättet den signalverlauf indem es den mittelwert aus den vergangenen werten zurückgibt
+float CarPhysics::lowpass(static float new_value, std::list<float>* sample_list, static int list_size){
     sample_list->push_front(new_value);
-    if (sample_list->size()>sample_size){
+    if (sample_list->size()>list_size){
         sample_list->pop_back();
     }
     float list_average=0;

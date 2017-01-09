@@ -15,6 +15,16 @@ Item
     property real rpm_g;
     property real time_g;
 
+    Timer {
+        id: timer
+        interval: 1
+        repeat: true
+        running: true
+        onTriggered: {
+            physics.step();
+        }
+
+    }
 
     CarPhysics{
         id: physics
