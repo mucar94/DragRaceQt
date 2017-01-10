@@ -10,8 +10,8 @@ Window {
 
     Item{
         id:car
-         property int actcar;
-
+        property int actcar;
+        property double position;
     }
 
     title: qsTr("DragRaceQt")

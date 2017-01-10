@@ -12,7 +12,7 @@ Image{
         height: 108
         width: 108
         source : "qrc:/picture/vehicles/mx5_wheel.png"
-        transform: Rotation { origin.x: 54; origin.y: 54; angle: 0}
+        transform: Rotation { origin.x: 54; origin.y: 54; angle: car.position*100}
 
     }
     Image{
@@ -22,7 +22,7 @@ Image{
         height: 108
         width: 108
         source : "qrc:/picture/vehicles/mx5_wheel.png"
-        transform: Rotation { origin.x: 54; origin.y: 54; angle: 0}
+        transform: Rotation { origin.x: 54; origin.y: 54; angle: car.position*100}
 
     }
 

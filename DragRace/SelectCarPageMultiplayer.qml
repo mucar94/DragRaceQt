@@ -100,7 +100,6 @@ Rectangle
             mouse.onClicked: {
                 page.currentIndex = 5;
 
-                console.log("reset_physics");
                 game_multiplayer.physics.start();
                 game_multiplayer.physics2.start();
 

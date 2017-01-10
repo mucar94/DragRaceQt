@@ -29,7 +29,10 @@ Item
     CarPhysics{
         id: physics
         onV_update: speed_g = v*3.6
-        onS_update: position_g = s
+        onS_update:{ position_g = s;
+                     car.position = s;
+                     //racecar.childAt(racecar.currentIndex).fontwheel.rotation.angle=s*100
+                    }
         onRpm_update: rpm_g = rpm
         onT_update: time_g = t
         onEnd_of_race:  finishtimelable.text=t.toFixed(3)
@@ -37,7 +40,7 @@ Item
 
     Image {
         width: 3240*15; height: 1080
-        x: redracecar.x - 2000 - position_g*100
+        x: racecar.x - 2000 - position_g*100
 //        y: redracecar.y
         anchors.bottom: parent.bottom
         anchors.bottomMargin: -10
@@ -50,8 +53,32 @@ Item
     }
 
 
+    Rectangle
+    {
+        width: 50
+        height: width
+        radius: 100
+        color: back_area.containsMouse?"lightgrey" :"grey"
+        Text{
+            anchors.centerIn: parent
+            text: "BACK"
+        }
+
+        MouseArea
+        {
+            id: back_area
+            hoverEnabled: true
+
+            anchors.fill: parent
+            onClicked: {page.currentIndex = 0;
+                physics.stop();}
+        }
+
+    }
+
+
     StackLayout {
-        id: redracecar
+        id: racecar
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.horizontalCenterOffset: -200
         anchors.bottom: parent.bottom
@@ -89,94 +116,10 @@ Item
         font.pointSize: 20
 
         anchors.top: gaugerow.bottom
-        text: "##"
+        text: ""
         color: "white"
     }
 
-    Row
-    {
-
-        id: controls
-        anchors.top : parent.top
-        anchors.topMargin: 30
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 20
-
-        Rectangle
-        {
-            id: startrect
-            width: 50
-            height: width
-            radius: 100
-            color: start_area.containsMouse ? "greenyellow": "green"
-
-
-            Text
-            {
-                anchors.centerIn: parent
-                text: "START"
-                font.bold: true
-            }
-
-            MouseArea
-            {
-                id: start_area
-                hoverEnabled: true
-
-                anchors.fill: parent
-                onClicked: physics.start()
-            }
-
-
-        }
-
-        Rectangle
-        {
-            width: 50
-            height: width
-            radius: 100
-            color: stop_area.containsMouse?"lightgrey" :"grey"
-            Text{
-                anchors.centerIn: parent
-                text: "STOP"
-            }
-
-            MouseArea
-            {
-                hoverEnabled: true
-                id: stop_area
-                anchors.fill: parent
-                onClicked: {physics.stop();}
-            }
-
-        }
-
-        Rectangle
-        {
-            width: 50
-            height: width
-            radius: 100
-            color: back_area.containsMouse?"lightgrey" :"grey"
-            Text{
-                anchors.centerIn: parent
-                text: "BACK"
-            }
-
-            MouseArea
-            {
-                id: back_area
-                hoverEnabled: true
-
-                anchors.fill: parent
-                onClicked: {page.currentIndex = 0;
-                    physics.stop();}
-            }
-
-        }
-
-
-
-    }
 
 
     Row
@@ -191,7 +134,7 @@ Item
         CircularGauge
         {
 
-            maximumValue: 240
+            maximumValue: 280
             value: speed_g
             width: 200
             height: width

@@ -100,7 +100,6 @@ Rectangle
             mouse.onClicked: {
                 page.currentIndex = 4;
 
-                console.log("reset_physics");
                 game.physics.start();
                 game.focus = true;
             }
