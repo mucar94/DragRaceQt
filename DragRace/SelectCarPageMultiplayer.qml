@@ -98,11 +98,13 @@ Rectangle
 
             text: "START"
             mouse.onClicked: {
-                page.currentIndex = 4;
+                page.currentIndex = 5;
 
                 console.log("reset_physics");
-                game.physics.start();
-                game.focus = true;
+                game_multiplayer.physics.start();
+                game_multiplayer.physics2.start();
+
+                game_multiplayer.focus = true;
             }
             imagesource: "qrc:/picture/start.png"
         }

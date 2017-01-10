@@ -21,6 +21,10 @@ Item
     property real rpm_g2;
     property real time_g2;
 
+
+    Keys.onUpPressed: physics.shift_up();
+    Keys.onSpacePressed: physics2.shift_up();
+
     Timer {
         id: timer
         interval: 1
@@ -39,7 +43,9 @@ Item
         onS_update: position_g = s
         onRpm_update: rpm_g = rpm
         onT_update: time_g = t
-        onEnd_of_race:  finishtimelable.text=t.toFixed(3)
+        onEnd_of_race: { finishtimelable.text=t.toFixed(3)
+                         physics2.stop()
+                       }
     }
     CarPhysics{
         id: physics2
@@ -47,7 +53,9 @@ Item
         onS_update: position_g2 = s
         onRpm_update: rpm_g2 = rpm
         onT_update: time_g2 = t
-        onEnd_of_race:  finishtimelable2.text=t.toFixed(3)
+        onEnd_of_race: { finishtimelable.text=t.toFixed(3)
+                         physics.stop()
+                       }
     }
 
     Image {
@@ -295,9 +303,4 @@ Item
 
     }
 
-    focus: true
-    Keys.onRightPressed: redracecar.anchors.horizontalCenterOffset = redracecar.anchors.horizontalCenterOffset + 10
-    Keys.onLeftPressed: redracecar.anchors.horizontalCenterOffset = redracecar.anchors.horizontalCenterOffset - 10
-    Keys.onUpPressed: physics.shift_up();
-    Keys.onDownPressed: physics.shift_down();
 }

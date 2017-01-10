@@ -247,9 +247,7 @@ Item
 
     }
 
-    focus: true
-    Keys.onRightPressed: redracecar.anchors.horizontalCenterOffset = redracecar.anchors.horizontalCenterOffset + 10
-    Keys.onLeftPressed: redracecar.anchors.horizontalCenterOffset = redracecar.anchors.horizontalCenterOffset - 10
+
     Keys.onUpPressed: physics.shift_up();
-    Keys.onDownPressed: physics.shift_down();
+
 }

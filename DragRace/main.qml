@@ -14,18 +14,6 @@ Window {
 
     }
 
-
-    Item{
-        id:gamecontroller
-        function reset_physics() {
-            console.log("reset_physics");
-            demopage.physics.start();
-            demopage.physics2.start();
-            //demopage.timelable.color = "white";
-            //demopage.timelable.text = "time: " + demopage.time_g.toFixed(2);
-        }
-    }
-
     title: qsTr("DragRaceQt")
 
 
@@ -47,9 +35,18 @@ Window {
             //2
         }
 
-        DemoPageMultiplayer{
-            id: demopage
+        SelectCarPageMultiplayer{
             //3
+        }
+
+        GameSingleplayer{
+            id: game
+            //4
+        }
+
+        GameMultiplayer{
+            id: game_multiplayer
+            //5
         }
     }
 

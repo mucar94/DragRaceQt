@@ -4,19 +4,17 @@
         <file>HighscorePage.qml</file>
         <file>MainMenuPage.qml</file>
         <file>SelectCarPage.qml</file>
-        <file>DemoPage.qml</file>
+        <file>GameSingleplayer.qml</file>
         <file>picture/multiplyr.png</file>
         <file>picture/singleplyr.png</file>
         <file>picture/highscore.svg</file>
         <file>picture/1v1.png</file>
-        <file>picture/demo.png</file>
         <file>picture/start.png</file>
         <file>picture/timerace.png</file>
         <file>picture/back.png</file>
         <file>MenuButton.qml</file>
         <file>picture/W1v1.png</file>
         <file>picture/Wback.png</file>
-        <file>picture/Wdemo.png</file>
         <file>picture/Whighscore.png</file>
         <file>picture/Wmultiplyr.png</file>
         <file>picture/Wsingleplyr.png</file>
@@ -35,7 +33,8 @@
         <file>picture/vehicles/lancer_evo.png</file>
         <file>picture/vehicles/mx5.png</file>
         <file>picture/vehicles/r8.png</file>
-        <file>DemoPageMultiplayer.qml</file>
+        <file>GameMultiplayer.qml</file>
         <file>picture/racetrack_barrier.png</file>
+        <file>SelectCarPageMultiplayer.qml</file>
     </qresource>
 </RCC>

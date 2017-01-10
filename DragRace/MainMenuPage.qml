@@ -36,7 +36,7 @@ Rectangle
             smooth: true
             antialiasing: true
             source: "qrc:/picture/Titel.png"
-            height: titel_rect.height  // TODO : skalierbarkeit
+            height: titel_rect.height
             width: titel_rect.width
         }
     }
@@ -95,22 +95,16 @@ Rectangle
                 {
                     imagesource:  mouse.containsMouse ?"qrc:/picture/Wsingleplyr.png" : "qrc:/picture/singleplyr.png"
                     text: "EINZELSPIELER"
-                    mouse.onClicked: stack.replace(gamemodeselect_singleplyr)
+                    mouse.onClicked: page.currentIndex = 2
                 }
 
                 MenuButton
                 {
                     text: "MEHRSPIELER"
                     imagesource: mouse.containsMouse ?"qrc:/picture/Wmultiplyr.png" :"qrc:/picture/multiplyr.png"
-                    mouse.onClicked: stack.replace(gamemodeselect_multiplyr)
+                    mouse.onClicked: page.currentIndex = 3
                 }
 
-                MenuButton
-                {
-                    text: "DEMO"
-                    imagesource: mouse.containsMouse ? "qrc:/picture/Wdemo.png" : "qrc:/picture/demo.png"
-                    mouse.onClicked: page.currentIndex = 2
-                }
 
                 MenuButton
                 {
@@ -121,82 +115,5 @@ Rectangle
             }
         }
     }
-
-
-    Component
-{
-        id: gamemodeselect_singleplyr
-        Item
-    {
-            anchors.verticalCenter: parent.verticalCenter
-            Column
-            {
-                width: root.width*0.25
-                leftPadding : root.width/20
-                anchors.verticalCenter: parent.verticalCenter
-                spacing: root.width/128
-
-                MenuButton
-                {
-                    text: "ZEITRENNEN"
-                    mouse.onClicked: page.currentIndex = 2
-                    imagesource: mouse.containsMouse ? "qrc:/picture/Wtimerace.png": "qrc:/picture/timerace.png"
-
-                }
-
-                MenuButton
-                {
-                    text: "1 GEGEN 1"
-                    mouse.onClicked: page.currentIndex = 2
-                    imagesource: mouse.containsMouse ? "qrc:/picture/W1v1.png":"qrc:/picture/1v1.png"
-                }
-
-                MenuButton
-                {
-                    text: "ZURÜCK"
-                    mouse.onClicked: stack.replace(mainselect)
-                    imagesource: mouse.containsMouse ?"qrc:/picture/Wback.png": "qrc:/picture/back.png"
-                }
-            }
-        }
-    }
-    Component
-{
-        id: gamemodeselect_multiplyr
-        Item
-    {
-            anchors.verticalCenter: parent.verticalCenter
-            Column
-            {
-                width: root.width*0.25
-                leftPadding : root.width/20
-                anchors.verticalCenter: parent.verticalCenter
-                spacing: root.width/128
-
-                MenuButton
-                {
-                    text: "ZEITRENNEN"
-                    mouse.onClicked: page.currentIndex = 2
-                    imagesource: mouse.containsMouse ? "qrc:/picture/Wtimerace.png": "qrc:/picture/timerace.png"
-                }
-
-                MenuButton
-                {
-                    text: "1 GEGEN 1"
-                    mouse.onClicked: page.currentIndex = 2
-                    imagesource: mouse.containsMouse ? "qrc:/picture/W1v1.png":"qrc:/picture/1v1.png"
-                }
-
-                MenuButton
-                {
-                    text: "ZURÜCK"
-                    mouse.onClicked: stack.replace(mainselect)
-                    imagesource: mouse.containsMouse ?"qrc:/picture/Wback.png": "qrc:/picture/back.png"
-                }
-            }
-        }
-    }
-
-
 }
 
