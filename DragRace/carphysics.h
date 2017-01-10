@@ -25,7 +25,7 @@ public slots:
     void step();
     void shift_up();
 private:
-    float lowpass(static float, std::list<float>*, static int);
+    float lowpass(float, std::list<float>*, int);
     int gear;
     float a;
     int v_lowpass=150;
