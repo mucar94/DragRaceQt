@@ -98,7 +98,7 @@ DashboardGaugeStyle {
         Text {
             id: rpmText
             font.pixelSize: tachometerStyle.toPixels(0.3)
-            text: rpm_g.toFixed()
+            text: ""
             color: "white"
             horizontalAlignment: Text.AlignRight
             anchors.horizontalCenter: parent.horizontalCenter

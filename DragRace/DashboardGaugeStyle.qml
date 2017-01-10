@@ -120,7 +120,7 @@ CircularGaugeStyle {
         Text {
             id: speedText
             font.pixelSize: toPixels(0.3)
-            text: speed_g.toFixed()
+            text: ""
             color: "white"
             horizontalAlignment: Text.AlignRight
             anchors.horizontalCenter: parent.horizontalCenter

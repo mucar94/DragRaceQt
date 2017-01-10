@@ -45,7 +45,7 @@ Item
                     }
         onRpm_update: rpm_g = rpm
         onT_update: time_g = t
-        onEnd_of_race: { finishtimelable.text=t.toFixed(3)
+        onEnd_of_race: { finishtimelable.text= "player 1 wins " + t.toFixed(3)
                          physics2.stop()
                        }
     }
@@ -55,7 +55,7 @@ Item
         onS_update: position_g2 = s
         onRpm_update: rpm_g2 = rpm
         onT_update: time_g2 = t
-        onEnd_of_race: { finishtimelable.text=t.toFixed(3)
+        onEnd_of_race: { finishtimelable.text= "player 2 wins " + t.toFixed(3)
                          physics.stop()
                        }
     }
