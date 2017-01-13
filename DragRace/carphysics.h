@@ -9,9 +9,7 @@ class CarPhysics : public QObject
     Q_OBJECT
 public:
     explicit CarPhysics(QObject *parent = 0);
-    float v;
-    float s;
-    float rpm;
+
 signals:
     void end_of_race(qreal t);
     void rpm_update(qreal rpm);
@@ -25,7 +23,11 @@ public slots:
     void step();
     void shift_up();
 private:
-    float lowpass(float, std::list<float>*, int);
+    float lowpass(const float, std::list<float>*, const int);
+
+    float v;
+    float s;
+    float rpm;
     int gear;
     float a;
     int v_lowpass=150;

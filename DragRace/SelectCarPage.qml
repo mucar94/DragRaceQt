@@ -102,6 +102,7 @@ Rectangle
 
                 game.physics.start();
                 game.focus = true;
+                game.finishtimelable.text="press Arrow Up to shift"
             }
             imagesource: "qrc:/picture/start.png"
         }

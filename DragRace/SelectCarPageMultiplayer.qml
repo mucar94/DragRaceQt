@@ -104,6 +104,8 @@ Rectangle
                 game_multiplayer.physics2.start();
 
                 game_multiplayer.focus = true;
+
+                game_multiplayer.finishtimelable.text="player1 press Arrow Up to shift; player2 press Spacebar to shift"
             }
             imagesource: "qrc:/picture/start.png"
         }

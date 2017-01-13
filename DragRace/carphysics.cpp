@@ -118,7 +118,7 @@ void CarPhysics::step(){
 }
 
 // glättet den signalverlauf indem es den mittelwert aus den vergangenen werten zurückgibt
-float CarPhysics::lowpass(float new_value, std::list<float>* sample_list, int list_size){
+float CarPhysics::lowpass(const float new_value, std::list<float>* sample_list, const int list_size){
     sample_list->push_front(new_value);
     if (sample_list->size()>list_size){
         sample_list->pop_back();
